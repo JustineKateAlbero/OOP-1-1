@@ -5,17 +5,15 @@ try:
                  r'DBQ=C:\Users\Admin\Documents\Database1.accdb;'
     conn = pyodbc.connect(connection)
 
-    cursor = conn.cursor()
+    database = conn.cursor()
 
-    Table1 = (
+    Table1 = (10, 'Justine Kate P. Albero', 19, 'BSCPE','TMC Cavite',99)
 
-        (10, 'Justine Kate P. Albero', 19, 'TMC Cavite','BSCPE',99)
-    )
 
-    cursor.execute('INSERT INTO Table1 VALUES (?,?,?,?,?,?)', Table1)
+    database.execute('INSERT INTO Table1 VALUES (?,?,?,?,?,?)', Table1)
     conn.commit()
     print('Data Inserted')
 
 
-except pyodbc.Error as e:
-    print("Error in connection", e)
+except pyodbc.Error:
+    print("Error in connection")
